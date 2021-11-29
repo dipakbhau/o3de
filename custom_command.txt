@@ -1,0 +1,23 @@
+# Configure 
+
+cmake -B e:\o3de\o3de\build\windows_vs2019 -S e:\o3de\o3de -G "Visual Studio 16" -DLY_3RDPARTY_PATH=e:\o3de\o3de-packages
+
+# Register
+
+scripts\o3de.bat register --this-engine
+
+-----------------------------------------------------------------
+
+# Setup New Project
+
+scripts\o3de.bat create-project --project-path e:\o3de\o3de-project
+
+
+# Configure New Project
+
+cmake -B e:\o3de\o3de\build\windows_vs2019 -S e:\o3de\o3de-project -G "Visual Studio 16"
+
+
+# Build the project, Asset Processor, and Editor to binaries by running this command inside your project:
+
+cmake --build e:\o3de\o3de\build\windows_vs2019 --target o3de-project.GameLauncher Editor --config profile -- /m
